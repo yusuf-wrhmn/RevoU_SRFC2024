@@ -1,66 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Kalkulator Segitiga</title>
-        <link rel="stylesheet" href="stlyle.css">
-    </head>
-    <body>
-        <div id="segitiga" class="tab-pane fade active in">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-heading">
-                            <h2>Luas Segitiga</h2>
-                        </div>
-                        <div class="panel-body">
-                            <p><img src="https://katik.azurewebsites.net/images/segitiga.jpg" alt="Luas Segitiga"></p>
-                            <p class="text-left">Rumus Luas Segitiga yaitu :</p>
-                            <p><strong>L = 1/2 x a x t</strong></p>
-                            <p class="text-left">Di mana :<br>L = Luas<br>a = Panjang Alas<br>t = Tinggi</p>
-                        </div>
-                        <div class="panel-footer">
-                            <h3>Hitung Luas Segitiga</h3>
-                            <form id="luas-segitiga" method="post" action="perhitungan/luas-segitiga.php">
-                                <input class="form-control" id="alas" name="alas" onblur="extractNumber(this,3,true);" onkeyup="extractNumber(this,3,true);" onkeypress="return blockNonNumbers(this, event, true, true);" placeholder="Nilai Alas" type="text" required=""><br>
-                                <input class="form-control" id="tinggi" name="tinggi" onblur="extractNumber(this,3,true);" onkeyup="extractNumber(this,3,true);" onkeypress="return blockNonNumbers(this, event, true, true);" placeholder="Nilai Tinggi" type="text" required="">
-                                <div id="loading-luas-segitiga" class="text-center" style="display: none;"><br><img src="https://katik.azurewebsites.net/images/loading.gif" alt="loading..."></div>
-                                <div id="result-luas-segitiga" class="text-left" style=""><br>L = 1/2 x a x t<br>L = 1/2 x 5 x 10<br>L = 25</div>
-                                <input type="submit" class="btn btn-lg" value="Hitung">
-                                <p class="text-right">
-                                    <input type="reset" class="btn btn-warning" value="Reset" onclick="showluassegitiga(0);">
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-heading">
-                            <h2>Keliling Segitiga</h2>
-                        </div>
-                        <div class="panel-body">
-                            <p><img src="https://katik.azurewebsites.net/images/segitiga.jpg" alt="Keliling Segitiga"></p>
-                            <p class="text-left">Rumus Keliling Segitiga yaitu :</p>
-                            <p><strong>K = S1 + S2 + S3</strong></p>
-                            <p class="text-left">Di mana :<br>K = Keliling<br>S1 = Sisi A<br>S2 =  Sisi B<br>S3 = Sisi C</p>
-                        </div>
-                        <div class="panel-footer">
-                            <h3>Hitung Keliling Segitiga</h3>
-                            <form id="keliling-segitiga" method="post" action="perhitungan/keliling-segitiga.php">
-                                <input class="form-control" id="sisi1" name="sisi1" onblur="extractNumber(this,3,true);" onkeyup="extractNumber(this,3,true);" onkeypress="return blockNonNumbers(this, event, true, true);" placeholder="Nilai Sisi A" type="text" required=""><br>
-                                <input class="form-control" id="sisi2" name="sisi2" onblur="extractNumber(this,3,true);" onkeyup="extractNumber(this,3,true);" onkeypress="return blockNonNumbers(this, event, true, true);" placeholder="Nilai Sisi B" type="text" required=""><br>
-                                <input class="form-control" id="sisi3" name="sisi3" onblur="extractNumber(this,3,true);" onkeyup="extractNumber(this,3,true);" onkeypress="return blockNonNumbers(this, event, true, true);" placeholder="Nilai Sisi C" type="text" required="">
-                                <div id="loading-keliling-segitiga" class="text-center" style="display:none;"><br><img src="https://katik.azurewebsites.net/images/loading.gif" alt="loading..."></div>
-                                <div id="result-keliling-segitiga" class="text-left" style="display:none;"></div>
-                                <input type="submit" class="btn btn-lg" value="Hitung">
-                                <p class="text-right">
-                                    <input type="reset" class="btn btn-warning" value="Reset" onclick="showkelilingsegitiga(0);">
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display"></div>
+        <div class="buttons">
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="chooseOperation('/')">/</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="chooseOperation('*')">*</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button class="operator" onclick="chooseOperation('-')">-</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="chooseOperation('+')">+</button>
+            <button class="equals" onclick="compute()">=</button>
         </div>
-    </body>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
